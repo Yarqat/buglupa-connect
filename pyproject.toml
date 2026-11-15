@@ -1,0 +1,49 @@
+[project]
+name = "buglupa-connect"
+version = "0.1.0"
+description = "buglupa connect: let BugLupa Cloud's scanner test an app on your computer through a private, outbound-only tunnel."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "LicenseRef-Proprietary"
+license-files = ["LICENSE"]
+authors = [{ name = "Yarqat (SMC-Private) Limited", email = "support@yarqat.com" }]
+# Standard library only: nothing to audit but this package, and a single-file build stays simple.
+dependencies = []
+classifiers = [
+  "Environment :: Console",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://buglupa.com"
+Documentation = "https://buglupa.com/docs"
+
+[project.scripts]
+buglupa-connect = "buglupa_connect.cli:main"
+buglupa = "buglupa_connect.cli:buglupa_main"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/buglupa_connect"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "S", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106", "S107"]
