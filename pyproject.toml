@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "buglupa connect: let BugLupa Cloud's scanner test an app on your computer through a private, outbound-only tunnel."
 readme = "README.md"
 requires-python = ">=3.10"
-license = "LicenseRef-Proprietary"
+license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "Yarqat (SMC-Private) Limited", email = "support@yarqat.com" }]
 # Standard library only: nothing to audit but this package, and a single-file build stays simple.
